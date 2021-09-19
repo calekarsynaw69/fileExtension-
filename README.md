@@ -1,0 +1,2 @@
+# fileExtension-
+#include &lt;Array.au3>  ;~ $DirPath = @DesktopDir $DirPath = @ScriptDir $sPath = " -Path " &amp; $DirPath &amp; " " $sPath = "" ;search  @ScriptDir  $i = 3  ;search for files Levels Deep From $DirPath $iDepth = " -Depth " &amp; $i $iDepth = " -Recurse"   ; search all ;skip functionality of Level stop  $Extension = '".au3",".txt"' ;not applicable yet need to find something that will work for multi extentions $Extension = '.au3'  $fileExtension = "| Where-Object{$_.extension -eq '" &amp; $Extension &amp; "'}" $fileExtension = "" ; Get all Types
