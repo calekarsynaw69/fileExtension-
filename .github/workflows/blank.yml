@@ -1,0 +1,23 @@
+;List First file found Hits
+$iHits = 5
+$DislpayiHits = "|Select-Object -First " & $iHits
+$DislpayiHits = ""    ; deactivate
+
+; search filenames that have *text* in their name
+$sfilenameLike = '*text*'
+$sfilename1 = "| where {$_.Name -like '" & $sfilenameLike & "'}"
+$sfilename1 = ""    ;skip functionality
+
+; search filenames by expr just Use $sfilename1 or both ;)
+$sfilenameMatch = '^text'
+$sfilename2 = "| where {$_.Name -match  '" & $sfilenameMatch & "'}"
+$sfilename2 = ""    ;skip functionality
+
+$sSearchString = "hello" ;search in files for instance "<strings.au3>"
+$sSearch = "| Where-Object { $_ | Select-String -Pattern '" & $sSearchString & "' }"
+If Not $fileExtension Then $sSearch = ""
+$sSearch = ""    ; deactivate search  ;Optional - Not to search in files thus the remaining function will only list latest (if Default)
+
+; Sort list to most Recent first to the top of the list
+$bLatest = "| Sort-Object -Descending lastwritetime"
+$PSI = "| Where-Object { !$_.PSIsContainer} " ;  Default
